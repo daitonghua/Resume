@@ -141,6 +141,24 @@
       font-style: italic;
       white-space: nowrap;
     }
+    .major {
+      color: #2980b9;
+      font-weight: normal;
+      font-style: italic;
+      margin: 4px 0;
+    }
+    .gpa {
+      color: #27ae60;
+      font-weight: bold;
+      margin: 4px 0;
+    }
+    .thesis {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-bottom: 1px dashed #eee;
+      font-style: italic;
+      color: #555;
+    }
 
     ul {
       padding-left: 20px;
@@ -242,19 +260,28 @@
         educationTitle: "教育背景",
         education: [
           {
-            degree: "电信系统 | 博士生",
+            degree: "博士生",
             school: "俄罗斯高等经济大学",
-            date: "2023 – 2027 (预计)"
+            date: "2023 – 2027 (预计)",
+            major: "通信系统、网络与设备",
+            thesis: "基于无线网络的感知方法",
+            // gpa: "-"
           },
           {
-            degree: "应用数学与物理 | 硕士",
+            degree: " | 硕士",
             school: "莫斯科物理技术学院",
-            date: "2021 – 2023"
+            date: "2021 – 2023",
+            major: "应用数学与物理",
+            thesis: "开发数字预失真的量化方法",
+            gpa: "5.0/5.0"
           },
           {
-            degree: "应用数学与物理 | 学士",
+            degree: "学士",
             school: "莫斯科物理技术学院",
-            date: "2016 – 2021"
+            date: "2016 – 2021",
+            major: "应用数学与物理",
+            thesis: "不规则结构中的磁弹波",
+            gpa: "4.6/5.0"
           }
         ],
         footer: "更新于 2025 年 12 月"
@@ -299,19 +326,28 @@
         educationTitle: "Education",
         education: [
           {
-            degree: "PhD Candidate in Communication Systems",
+            degree: "PhD Candidate in Communication Systems, Networks and Devices",
             school: "National Research University Higher School of Economics (HSE)",
-            date: "2023 – 2027 (expected)"
+            date: "2023 – 2027 (expected)",
+            major: "Communication Systems, Networks and Devices",
+            thesis: "Sensing Methods Based on Wireless Networks",
+            // gpa: "-"
           },
           {
-            degree: "Master’s in Applied Mathematics and Physics",
+            degree: "Master's in Applied Mathematics and Physics",
             school: "Moscow Institute of Physics and Technology (MIPT)",
-            date: "2021 – 2023"
+            date: "2021 – 2023",
+            major: "Applied Mathematics and Physics",
+            thesis: "Development of Quantization Methods for Digital Predistortion",
+            gpa: "5.0/5.0"
           },
           {
-            degree: "Bachelor’s in Applied Mathematics and Physics",
+            degree: "Bachelor's in Applied Mathematics and Physics",
             school: "Moscow Institute of Physics and Technology (MIPT)",
-            date: "2016 – 2021"
+            date: "2016 – 2021",
+            major: "Applied Mathematics and Physics",
+            thesis: "Magnetoelastic Waves in Irregular Structures",
+            gpa: "4.6/5.0"
           }
         ],
         footer: "Updated December 2025"
@@ -356,19 +392,28 @@
         educationTitle: "Образование",
         education: [
           {
-            degree: "Аспирантура по специальности \"Системы, сети и устройства телекоммуникаций\"",
+            degree: "Аспирант",
             school: "НИУ ВШЭ",
-            date: "2023 – 2027"
+            date: "2023 – 2027",
+            major: "Системы, сети и устройства телекоммуникаций",
+            thesis: "Разработка и исследование методов детектирования с помощью сигналов беспроводной связи",
+            // gpa: "-"
           },
           {
-            degree: "Магистр по направлению прикладной математике и физике",
+            degree: "Магистр",
             school: "МФТИ",
-            date: "2021 – 2023"
+            date: "2021 – 2023",
+            major: "Прикладная математика и физика",
+            thesis: "Разработка методов квантования для цифровой предыскажения",
+            gpa: "5.0/5.0"
           },
           {
-            degree: "Бакалавриат по направлению прикладной математике и физике",
+            degree: "Бакалавр",
             school: "МФТИ",
-            date: "2016 – 2021"
+            date: "2016 – 2021",
+            major: "Прикладная математика и физика",
+            thesis: "Магнитоупругие волны в нерегулярных структурах",
+            gpa: "4.6/5.0"
           }
         ],
         footer: "Обновлено в декабре 2025 г."
@@ -416,9 +461,12 @@
             <div>
               <div class="degree">${edu.degree}</div>
               <div class="school">${edu.school}</div>
+              ${edu.major ? `<div class="major">${edu.major}</div>` : ''}
+              ${edu.gpa ? `<div class="gpa">GPA: ${edu.gpa}</div>` : ''}
             </div>
             <div class="date">${edu.date}</div>
           </div>
+          ${edu.thesis ? `<div class="thesis"> Thesis: ${edu.thesis}</div>` : ''}
         </div>
       `).join('');
 
@@ -428,7 +476,6 @@
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
       });
-
       currentLang = lang;
     }
 
